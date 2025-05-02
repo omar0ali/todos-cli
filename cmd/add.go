@@ -1,0 +1,31 @@
+package cmd
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+var addCmd = &cobra.Command{
+	Use:   "add",
+	Short: "add a task",
+	Long: `
+adding a task
+`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("add called")
+		title, _ := cmd.Flags().GetString("title")
+		desc, _ := cmd.Flags().GetString("desc")
+		fmt.Println("You have used the title: ", title, desc)
+		if len(args) > 0 {
+			fmt.Println("OO, we have args now :P")
+			fmt.Println(args)
+		}
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(addCmd)
+	addCmd.Flags().StringP("title", "t", "untilte", "Name the task")
+	addCmd.Flags().StringP("desc", "d", "description", "Description of the task")
+}
