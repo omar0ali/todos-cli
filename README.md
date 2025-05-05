@@ -13,7 +13,7 @@ Here is a list of functions it can do.
 8. Display created tasks
 
 ## Project Objective
-
+I am trying something new, when creating a new project, I was thinking of having why not to use some cli app, and wondered it would be cool that each one of these project to have some kind of todos or tasks and they are saved wihtin each of these project so each will have there own tasks for isolation.
 
 
 ## Personal Objective
@@ -21,6 +21,19 @@ I made this application just because I wanted to learn a cobra library and pract
 
 ### Setup
 
+There would two ways, either downloading the binary version or compiling from source code.
+
+- Clone repository
+
+```bash
+git clone https://github.com/omar0ali/todos-cli.git
+```
+
+Change path
+
+```bash
+cd /todos-cli
+```
 
 ### Usage
 
