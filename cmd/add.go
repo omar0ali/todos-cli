@@ -16,11 +16,16 @@ adding a task
 		fmt.Println("add called")
 		title, _ := cmd.Flags().GetString("title")
 		desc, _ := cmd.Flags().GetString("desc")
+		verbose, _ := cmd.Flags().GetBool("verbose")
+		if verbose {
+			fmt.Println("Verbose IS ON SO WE ADDING HERE TOO")
+		}
 		fmt.Println("You have used the title: ", title, desc)
 		if len(args) > 0 {
 			fmt.Println("OO, we have args now :P")
 			fmt.Println(args)
 		}
+		fmt.Println("The Info: ", data)
 	},
 }
 

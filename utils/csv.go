@@ -19,21 +19,13 @@ func ReadCSVFile(filename string) (*csv.Reader, error) {
 	if err != nil {
 		return nil, err
 	}
-	reader, err := parseCSV(data)
-	if err != nil {
-		return nil, err
-	}
-	return reader, nil
-}
-
-func parseCSV(data []byte) (*csv.Reader, error) {
-	reader := csv.NewReader(bytes.NewReader(data))
+	reader := csv.NewReader(bytes.NewReader(data)) // parsing
 	return reader, nil
 }
 
 func DisplayRecords(reader *csv.Reader) {
 	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
-	tabWriter.Write([]byte("ID\tTitle\tDscription\tStatus"))
+	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus"))
 	for {
 		record, err := reader.Read()
 		if err == io.EOF {
@@ -52,7 +44,6 @@ func DisplayRecords(reader *csv.Reader) {
 		title := record[1]
 		description := record[2]
 		status := record[3]
-
 		fmt.Fprintf(tabWriter, "%s\t%s\t%s\t%s\n", id, title, description, status)
 	}
 	tabWriter.Flush()
