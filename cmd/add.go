@@ -12,12 +12,12 @@ var addCmd = &cobra.Command{
 	Long:  "Adding tasks",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
-		fmt.Println("add called")
 		title, _ := cmd.Flags().GetString("title")
 		desc, _ := cmd.Flags().GetString("desc")
 		if verbose {
 			fmt.Println("Verbose IS ON SO WE ADDING HERE TOO")
 			fmt.Println("You have used the title: ", title, desc)
+			fmt.Println("add called")
 		}
 		if len(args) > 0 {
 			fmt.Println("OO, we have args now :P")
