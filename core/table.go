@@ -16,7 +16,7 @@ const (
 	StatusDone       Status = "done"
 )
 
-type tableCl struct {
+type TableCl struct {
 	Id          uint      `json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
@@ -24,9 +24,9 @@ type tableCl struct {
 	Status      Status    `json:"status"`
 }
 
-func NewRow(title string, desc string, status Status) *tableCl {
+func NewRow(title string, desc string, status Status) *TableCl {
 	lastId++
-	return &tableCl{
+	return &TableCl{
 		Id:          lastId,
 		Title:       title,
 		Description: desc,

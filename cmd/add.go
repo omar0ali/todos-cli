@@ -9,23 +9,21 @@ import (
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "add a task",
-	Long: `
-adding a task
-`,
+	Long:  "Adding tasks",
 	Run: func(cmd *cobra.Command, args []string) {
+		verbose, _ := cmd.Flags().GetBool("verbose")
 		fmt.Println("add called")
 		title, _ := cmd.Flags().GetString("title")
 		desc, _ := cmd.Flags().GetString("desc")
-		verbose, _ := cmd.Flags().GetBool("verbose")
 		if verbose {
 			fmt.Println("Verbose IS ON SO WE ADDING HERE TOO")
+			fmt.Println("You have used the title: ", title, desc)
 		}
-		fmt.Println("You have used the title: ", title, desc)
 		if len(args) > 0 {
 			fmt.Println("OO, we have args now :P")
 			fmt.Println(args)
 		}
-		fmt.Println("The Info: ", data)
+		fmt.Println("The Info: ", rows)
 	},
 }
 
