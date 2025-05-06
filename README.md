@@ -13,8 +13,11 @@ Here is a list of functions it can do.
 8. Display created tasks
 
 ## Project Objective
-I am trying something new, when creating a new project, I was thinking of having why not to use some cli app, and wondered it would be cool that each one of these project to have some kind of todos or tasks and they are saved wihtin each of these project so each will have there own tasks for isolation.
+I've been thinking of trying something new for organizing projects. Since each project typically lives in its own folder, I thought it would be useful to build a simple CLI app that manages to-do lists or tasks within each project directory.
 
+The idea is that whenever I run this CLI tool inside a project folder, it should detect the current working directory and create (or use) a tasks.json file right there. This file will store all the tasks related specifically to that project, keeping things isolated and organized.
+
+That way, every project can have its own independent task list without interfering with others — a lightweight, local task manager per project.
 
 ## Personal Objective
 I made this application just because I wanted to learn a cobra library and practice a little bit of golang. I really like the language and I want to get comfortable with it a little bit. This project isn't big, its small and simple and covers a varity of concepts of golang and cobra library.
