@@ -47,6 +47,16 @@ func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter.Flush()
 }
 
+func RemoveTask(id uint, rows []TableCl, verbose bool) {
+	var nRows []TableCl
+	for _, row := range rows {
+		if row.Id != id {
+			nRows = append(nRows, row)
+		}
+	}
+	rows = nRows
+}
+
 func IsValidStatus(s Status) bool {
 	switch s {
 	case StatusTodo:
