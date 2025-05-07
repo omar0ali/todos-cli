@@ -1,5 +1,5 @@
 # Todos CLI Application
-Just a simple CLI application that organizes all the tasks for a specific project, this works pretty much on any folder, it will create a json file which will be used as a storage for all the tasks created. The application is very simple to use, since I used [cobra] library to make a nice cli application.
+A simple CLI application that organizes tasks for a specific project. It works in any folder, creating a tasks.json file in each folder to store the tasks. This means each folder will have its own separate set of tasks. For example, if you run the app in the /project1/ folder, it will create a tasks.json file there. If you switch to another folder and run the app again, a new tasks.json file will be created for that folder, allowing you to manage different sets of tasks for each project.
 
 ### List of Libraries used:
 - [cobra-cli, cobra](https://github.com/spf13/cobra)
@@ -23,7 +23,7 @@ The idea is that whenever I run this CLI tool inside a project folder, it should
 That way, every project can have its own independent task list without interfering with others a lightweight, local task manager per project.
 
 ## Personal Objective
-I made this application just because I wanted to learn a cobra library and practice a little bit of golang. I really like the language and I want to get comfortable with it a little bit. This project isn't big, its small and simple and covers a varity of concepts of golang and cobra library.
+I created this application to learn the Cobra library and practice my skills in Go. I really enjoy the language and want to become more comfortable with it. This project isn’t large; it’s small and simple, yet it covers a variety of concepts in Go and the Cobra library.
 
 ### Setup
 
