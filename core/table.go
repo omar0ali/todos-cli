@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	lastId uint = 0
+	LastId uint = 0
 )
 
 type Status string
@@ -28,9 +28,9 @@ type TableCl struct {
 }
 
 func NewRow(title string, desc string, status Status) *TableCl {
-	lastId++
+	LastId++
 	return &TableCl{
-		Id:          lastId,
+		Id:          LastId,
 		Title:       title,
 		Description: desc,
 		Created:     time.Now(),
@@ -47,7 +47,7 @@ func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter.Flush()
 }
 
-func isValidStatus(s Status) bool {
+func IsValidStatus(s Status) bool {
 	switch s {
 	case StatusTodo:
 		return true
