@@ -1,6 +1,9 @@
 # Todos CLI Application
 Just a simple CLI application that organizes all the tasks for a specific project, this works pretty much on any folder, it will create a json file which will be used as a storage for all the tasks created. The application is very simple to use, since I used [cobra] library to make a nice cli application.
 
+### List of Libraries used:
+- [cobra-cli, cobra](https://github.com/spf13/cobra)
+
 Here is a list of functions it can do.
 
 1. Create tasks
