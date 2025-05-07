@@ -23,8 +23,9 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.PersistentFlags().GetBool("verbose")
 		if verbose {
-			fmt.Println("Verbose is ON")
+			fmt.Println("[VERBOSE] ON")
 		}
+		fmt.Println(cmd.Help())
 	},
 }
 
@@ -33,7 +34,7 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-	defer utils.SaveData("tasks.json", &rows) //ensure this always execute at the end
+	defer utils.SaveData("tasks.json", rows) //ensure this always execute at the end
 }
 
 func init() {
