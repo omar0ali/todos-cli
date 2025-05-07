@@ -34,7 +34,11 @@ func LoadingData(filename string, rows any) {
 	}
 
 	if castedRows, ok := rows.(*[]core.TableCl); ok {
-		core.LastId = uint(len(*castedRows)) //getting the last id from core.TableCl
+		if len(*castedRows) > 0 {
+			core.LastId = (*castedRows)[len(*castedRows)-1].Id
+		} else {
+			core.LastId = 0 // or whatever default you prefer
+		}
 	} else {
 		log.Println("Failed to cast rows to *[]core.TableCl")
 	}
