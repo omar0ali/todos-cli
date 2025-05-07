@@ -1,6 +1,9 @@
 package core
 
 import (
+	"fmt"
+	"os"
+	"text/tabwriter"
 	"time"
 )
 
@@ -33,6 +36,15 @@ func NewRow(title string, desc string, status Status) *TableCl {
 		Created:     time.Now(),
 		Status:      status,
 	}
+}
+
+func DisplayRecords(rows []TableCl, verbose bool) {
+	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
+	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
+	for i := 0; i < len(rows); i++ {
+		fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].Created, rows[i].Status)
+	}
+	tabWriter.Flush()
 }
 
 func isValidStatus(s Status) bool {
