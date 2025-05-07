@@ -1,11 +1,11 @@
 package utils
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"os"
 
-	"encoding/json"
+	"github.com/omar0ali/todos/core"
 )
 
 func LoadingData(filename string, rows any) {
@@ -16,20 +16,31 @@ func LoadingData(filename string, rows any) {
 			log.Panic(err)
 		}
 		defer f.Close() //closing file when we done
+		f.Write([]byte("[]"))
 	}
 	var data []byte
 	data, err = os.ReadFile(filename)
 	if err != nil {
 		log.Panic(err)
 	}
-	err = json.Unmarshal(data, &rows)
+
+	if len(data) == 0 { //additional check
+		data = []byte("[]")
+	}
+
+	err = json.Unmarshal(data, rows)
 	if err != nil {
 		log.Panic(err)
 	}
-	fmt.Println(rows)
+
+	if castedRows, ok := rows.(*[]core.TableCl); ok {
+		core.LastId = uint(len(*castedRows)) //getting the last id from core.TableCl
+	} else {
+		log.Println("Failed to cast rows to *[]core.TableCl")
+	}
 }
 
-func SaveData(filename string, rows any) {
+func SaveData(filename string, rows []core.TableCl) {
 	data, err := json.MarshalIndent(rows, "", "  ")
 	if err != nil {
 		log.Panic(err)
