@@ -13,15 +13,16 @@ var removeCmd = &cobra.Command{
 	Long:  "removing a task from tasks list by providing an id of the task",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
-		id_remove, _ := cmd.Flags().GetUint("remove")
+		id_remove, _ := cmd.Flags().GetUint("id")
+		fmt.Println(id_remove)
 		if verbose {
-			fmt.Println("[ID] ", id_remove)
+			fmt.Printf("[ID] %d [REMOVED]\n", id_remove)
 		}
-		core.RemoveTask(id_remove, rows, verbose)
+		core.RemoveTask(id_remove, &rows, verbose)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(removeCmd)
-	rootCmd.Flags().UintP("remove", "d", 0, "Removing a task via an ID")
+	removeCmd.Flags().UintP("id", "d", 0, "Removing a task via an ID")
 }

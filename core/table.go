@@ -47,14 +47,17 @@ func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter.Flush()
 }
 
-func RemoveTask(id uint, rows []TableCl, verbose bool) {
+func RemoveTask(id uint, rows *[]TableCl, verbose bool) {
 	var nRows []TableCl
-	for _, row := range rows {
+	for _, row := range *rows {
 		if row.Id != id {
+			if verbose {
+				fmt.Printf("[FOUND ID] %d [TITLE] %s\n", row.Id, row.Title)
+			}
 			nRows = append(nRows, row)
 		}
 	}
-	rows = nRows
+	*rows = nRows
 }
 
 func IsValidStatus(s Status) bool {
