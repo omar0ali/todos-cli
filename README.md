@@ -17,7 +17,7 @@ I've been thinking of trying something new for organizing projects. Since each p
 
 The idea is that whenever I run this CLI tool inside a project folder, it should detect the current working directory and create (or use) a tasks.json file right there. This file will store all the tasks related specifically to that project, keeping things isolated and organized.
 
-That way, every project can have its own independent task list without interfering with others — a lightweight, local task manager per project.
+That way, every project can have its own independent task list without interfering with others a lightweight, local task manager per project.
 
 ## Personal Objective
 I made this application just because I wanted to learn a cobra library and practice a little bit of golang. I really like the language and I want to get comfortable with it a little bit. This project isn't big, its small and simple and covers a varity of concepts of golang and cobra library.
@@ -39,6 +39,24 @@ cd /todos-cli
 ```
 
 ### Usage
+```bash
+todos is a CLI application that help users to manager a todo list tasks. We can add remove edit tasks as well as assign completed tasks and show latest tasks.
 
-TODO: Here should be an explaination of how to use the application
+Usage:
+  todos [flags]
+  todos [command]
 
+Available Commands:
+  add         add a task
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  remove      removing a task from a list
+  show        Showing the list of tasks
+
+Flags:
+  -h, --help      help for todos
+  -v, --verbose   show debug messages
+
+Use "todos [command] --help" for more information about a command.
+
+```
