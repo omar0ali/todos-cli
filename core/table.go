@@ -47,6 +47,17 @@ func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter.Flush()
 }
 
+func DisplayRecordsStatus(rows []TableCl, verbose bool, status Status) {
+	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
+	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
+	for i := 0; i < len(rows); i++ {
+		if status == rows[i].Status {
+			fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].Created, rows[i].Status)
+		}
+	}
+	tabWriter.Flush()
+}
+
 func RemoveTask(id uint, rows *[]TableCl, verbose bool) {
 	var nRows []TableCl
 	for _, row := range *rows {
