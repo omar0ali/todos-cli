@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/omar0ali/todos/core"
@@ -23,7 +24,8 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.PersistentFlags().GetBool("verbose")
 		if verbose {
-			fmt.Println("[VERBOSE] ON")
+			log.Println("[VERBOSE] ON")
+			utils.GetCurrentDir(verbose)
 		}
 		fmt.Println(cmd.Help())
 	},
