@@ -1,19 +1,22 @@
 # Todos CLI Application
 A simple CLI application that organizes tasks for a specific project. It works in any folder, creating a tasks.json file in each folder to store the tasks. This means each folder will have its own separate set of tasks. For example, if you run the app in the /project1/ folder, it will create a tasks.json file there. If you switch to another folder and run the app again, a new tasks.json file will be created for that folder, allowing you to manage different sets of tasks for each project.
 
-### List of Libraries used:
+### List of Libraries Used:
 - [cobra-cli, cobra](https://github.com/spf13/cobra)
 
 Here is a list of functions it can do.
 
-1. Create tasks
-2. Edit tasks
-3. Delete tasks
-4. Change status of a task
-5. Display a all list of tasks
-6. Display in-progress tasks
-7. Display finished tasks
-8. Display created tasks
+### Features
+#### Done
+- [x] Create tasks
+- [x] Assign statuses to tasks (todo, in-progress, done)
+- [x] Delete tasks
+- [x] Display the full list of tasks
+- [x] Display in-progress tasks
+- [x] Display completed (done) tasks
+
+#### In-Progress
+- [ ] Edit tasks
 
 ## Project Objective
 I've been thinking of trying something new for organizing projects. Since each project typically lives in its own folder, I thought it would be useful to build a simple CLI app that manages to-do lists or tasks within each project directory.
@@ -43,7 +46,7 @@ cd /todos-cli
 
 ### Usage
 ```bash
-todos is a CLI application that help users to manager a todo list tasks. We can add remove edit tasks as well as assign completed tasks and show latest tasks.
+Todos is a CLI application that helps users manage their to-do tasks. You can add, remove, edit tasks, assign statuses, and display the latest tasks.
 
 Usage:
   todos [flags]
@@ -51,15 +54,15 @@ Usage:
 
 Available Commands:
   add         add a task
+  assign      Assign a new status to a task by its ID
   completion  Generate the autocompletion script for the specified shell
   help        Help about any command
   remove      removing a task from a list
-  show        Showing the list of tasks
+  show        Display the list of tasks
 
 Flags:
   -h, --help      help for todos
   -v, --verbose   show debug messages
 
 Use "todos [command] --help" for more information about a command.
-
 ```

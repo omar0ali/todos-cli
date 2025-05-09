@@ -6,11 +6,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// removeCmd represents the remove command
 var removeCmd = &cobra.Command{
 	Use:   "remove",
-	Short: "removing a task from a list",
-	Long:  "removing a task from tasks list by providing an id of the task",
+	Short: "Remove a task from the list",
+	Long:  "Remove a task from the task list by providing the task's ID.",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
 		id_remove, _ := cmd.Flags().GetUint("id")
@@ -24,5 +23,5 @@ var removeCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(removeCmd)
-	removeCmd.Flags().UintP("id", "d", 0, "Removing a task via an ID")
+	removeCmd.Flags().UintP("id", "d", 0, "Remove a task by its ID")
 }

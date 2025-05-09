@@ -9,8 +9,8 @@ import (
 
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "add a task",
-	Long:  "adding tasks",
+	Short: "Add a new task",
+	Long:  "Add a new task to the to-do list",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
 		title, _ := cmd.Flags().GetString("title")

@@ -41,6 +41,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "show debug messages")
+	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Show debug messages")
 	utils.LoadingData("tasks.json", &rows)
 }
