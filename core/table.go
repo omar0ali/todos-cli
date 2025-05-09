@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"text/tabwriter"
 	"time"
@@ -63,12 +64,28 @@ func RemoveTask(id uint, rows *[]TableCl, verbose bool) {
 	for _, row := range *rows {
 		if row.Id != id {
 			if verbose {
-				fmt.Printf("[FOUND ID] %d [TITLE] %s\n", row.Id, row.Title)
+				log.Printf("[FOUND ID] %d [TITLE] %s\n", row.Id, row.Title)
 			}
 			nRows = append(nRows, row)
 		}
 	}
 	*rows = nRows
+}
+
+func (r *TableCl) updateStatus(status Status) {
+	r.Status = status
+}
+
+func UpdateStatusTask(id uint, status Status, rows []TableCl, verbose bool) {
+	for i := 0; i < len(rows); i++ {
+		if (rows)[i].Id == id {
+			if verbose {
+				log.Printf("[FOUND ID] %d [TITLE] %s\n", rows[i].Id, rows[i].Title)
+			}
+			rows[i].updateStatus(status)
+			break
+		}
+	}
 }
 
 func IsValidStatus(s Status) bool {
