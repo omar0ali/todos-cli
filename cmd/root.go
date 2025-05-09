@@ -4,7 +4,6 @@ Copyright © 2025 OMAR BAGUNAID BAJUNAIDOMAR@GMAIL.COM
 package cmd
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -19,15 +18,17 @@ var (
 
 var rootCmd = &cobra.Command{
 	Use:   "todos",
-	Short: "a simple taks manager or todo list tracker.",
-	Long:  "todos is a CLI application that help users to manager a todo list tasks. We can add remove edit tasks as well as assign completed tasks and show latest tasks.",
+	Short: "A simple task manager and to-do list tracker.",
+	Long:  "Todos is a CLI application that helps users manage their to-do tasks. You can add, remove, edit tasks, assign statuses, and display the latest tasks.",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.PersistentFlags().GetBool("verbose")
 		if verbose {
 			log.Println("[VERBOSE] ON")
 			utils.GetCurrentDir(verbose)
 		}
-		fmt.Println(cmd.Help())
+		if err := cmd.Help(); err != nil {
+			log.Println("Error showing help:", err)
+		}
 	},
 }
 
@@ -36,7 +37,7 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-	defer utils.SaveData("tasks.json", rows) //ensure this always execute at the end
+	defer utils.SaveData("tasks.json", rows)
 }
 
 func init() {
