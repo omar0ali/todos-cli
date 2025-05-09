@@ -29,8 +29,7 @@ That way, every project can have its own independent task list without interferi
 I created this application to learn the Cobra library and practice my skills in Go. I really enjoy the language and want to become more comfortable with it. This project isn’t large; it’s small and simple, yet it covers a variety of concepts in Go and the Cobra library.
 
 ### Setup
-
-There would two ways, either downloading the binary version or compiling from source code.
+There are two ways to set it up: either download the binary version or compile it from the source code.
 
 - Clone repository
 
