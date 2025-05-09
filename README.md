@@ -4,8 +4,6 @@ A simple CLI application that organizes tasks for a specific project. It works i
 ### List of Libraries Used:
 - [cobra-cli, cobra](https://github.com/spf13/cobra)
 
-Here is a list of functions it can do.
-
 ### Features
 #### Done
 - [x] Create tasks
