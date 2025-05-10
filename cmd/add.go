@@ -41,4 +41,6 @@ func init() {
 	addCmd.Flags().StringP("title", "t", "untilte", "Name the task")
 	addCmd.Flags().StringP("desc", "d", "description", "Description of the task")
 	addCmd.Flags().StringP("status", "s", "todo", "Current status of the task")
+	addCmd.MarkFlagRequired("title")
+	addCmd.MarkFlagRequired("desc")
 }
