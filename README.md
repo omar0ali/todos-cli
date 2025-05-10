@@ -1,5 +1,5 @@
 # Todos CLI Application
-A simple CLI application that organizes tasks for a specific project. It works in any folder, creating a tasks.json file in each folder to store the tasks. This means each folder will have its own separate set of tasks. For example, if you run the app in the /project1/ folder, it will create a tasks.json file there. If you switch to another folder and run the app again, a new tasks.json file will be created for that folder, allowing you to manage different sets of tasks for each project.
+A simple CLI application that organizes tasks for a specific project. It works in any folder, creating a tasks.json file in each folder to store the tasks. This means each folder will have its own separate set of tasks. For example, if you run the app in the `/project1/` folder, it will create a tasks.json file there. If you switch to another folder and run the app again, a new tasks.json file will be created for that folder, allowing you to manage different sets of tasks for each project.
 
 ### List of Libraries Used:
 - [cobra-cli, cobra](https://github.com/spf13/cobra)
