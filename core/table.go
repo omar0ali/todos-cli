@@ -88,6 +88,31 @@ func UpdateStatusTask(id uint, status Status, rows []TableCl, verbose bool) {
 	}
 }
 
+func EditTask(rows []TableCl, id uint, title string, desc string, verbose bool) {
+	for i := 0; i < len(rows); i++ {
+		if rows[i].Id == id {
+			if verbose {
+				log.Printf("[FOUND ID] %d [OLD TITLE] %s [OLD DESCRIPTION] %s\n", rows[i].Id, rows[i].Title, rows[i].Description)
+			}
+			if title != "" {
+				rows[i].editTitle(title)
+			}
+			if desc != "" {
+				rows[i].editDesc(desc)
+			}
+			break
+		}
+	}
+}
+
+func (r *TableCl) editTitle(title string) {
+	r.Title = title
+}
+
+func (r *TableCl) editDesc(desc string) {
+	r.Description = desc
+}
+
 func IsValidStatus(s Status) bool {
 	switch s {
 	case StatusTodo:

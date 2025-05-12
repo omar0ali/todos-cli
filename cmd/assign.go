@@ -10,9 +10,7 @@ import (
 var assignCmd = &cobra.Command{
 	Use:   "assign",
 	Short: "Assign a new status to a task by its ID",
-	Long: `Assign a new status to a specific task using its ID.
-Available status options: todo, in-progress, or done.
-Example: todos assign -d 1 -s in-progress`,
+	Long:  `Assign a new status to a specific task using its ID. Available status options: todo, in-progress, or done. Example: todos assign -d 1 -s in-progress`,
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
 		id, _ := cmd.Flags().GetUint("id")
@@ -45,6 +43,6 @@ Example: todos assign -d 1 -s in-progress`,
 
 func init() {
 	rootCmd.AddCommand(assignCmd)
-	assignCmd.Flags().UintP("id", "d", 0, "ID of the task to update")
+	assignCmd.Flags().UintP("id", "d", 0, "ID of the task to assign status to a task")
 	assignCmd.Flags().StringP("status", "s", "todo", "New status to assign (todo, in-progress, done)")
 }
