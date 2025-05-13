@@ -20,7 +20,7 @@ var rootCmd = &cobra.Command{
 	Use:     "todos",
 	Short:   "A simple task manager and to-do list tracker.",
 	Long:    "Todos is a CLI application that helps users manage their to-do tasks. You can add, remove, edit tasks, assign statuses, and display the latest tasks.",
-	Version: "0.02",
+	Version: "1.00",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.PersistentFlags().GetBool("verbose")
 		if verbose {
