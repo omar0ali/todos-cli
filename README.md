@@ -51,6 +51,7 @@ Available Commands:
   add         add a task
   assign      Assign a new status to a task by its ID
   completion  Generate the autocompletion script for the specified shell
+  edit        Edit a selected task
   help        Help about any command
   remove      removing a task from a list
   show        Display the list of tasks
