@@ -43,6 +43,6 @@ var assignCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(assignCmd)
-	assignCmd.Flags().UintP("id", "d", 0, "ID of the task to assign status to a task")
+	assignCmd.Flags().UintP("id", "i", 0, "ID of the task to assign status to a task")
 	assignCmd.Flags().StringP("status", "s", "todo", "New status to assign (todo, in-progress, done)")
 }
