@@ -12,9 +12,7 @@ A simple CLI application that organizes tasks for a specific project. It works i
 - [x] Display the full list of tasks
 - [x] Display in-progress tasks
 - [x] Display completed (done) tasks
-
-#### In-Progress
-- [ ] Edit tasks
+- [x] Edit tasks
 
 ## Project Objective
 I've been thinking of trying something new for organizing projects. Since each project typically lives in its own folder, I thought it would be useful to build a simple CLI app that manages to-do lists or tasks within each project directory.
