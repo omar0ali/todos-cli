@@ -23,5 +23,5 @@ var removeCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(removeCmd)
-	removeCmd.Flags().UintP("id", "-i", 0, "Remove a task by its ID")
+	removeCmd.Flags().UintP("id", "i", 0, "Remove a task by its ID")
 }
