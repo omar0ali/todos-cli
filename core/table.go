@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"github.com/xeonx/timeago"
 	"log"
 	"os"
 	"text/tabwriter"
@@ -28,6 +29,10 @@ type TableCl struct {
 	Status      Status    `json:"status"`
 }
 
+func (t *TableCl) GetTime() string {
+	return timeago.English.Format(t.Created)
+}
+
 func NewRow(title string, desc string, status Status) *TableCl {
 	LastId++
 	return &TableCl{
@@ -43,7 +48,7 @@ func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
 	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
 	for i := 0; i < len(rows); i++ {
-		fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].Created, rows[i].Status)
+		fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
 	}
 	tabWriter.Flush()
 }
@@ -53,7 +58,7 @@ func DisplayRecordsStatus(rows []TableCl, verbose bool, status Status) {
 	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
 	for i := 0; i < len(rows); i++ {
 		if status == rows[i].Status {
-			fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].Created, rows[i].Status)
+			fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
 		}
 	}
 	tabWriter.Flush()
