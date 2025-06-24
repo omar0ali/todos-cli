@@ -1,2 +1,4 @@
 *.json
 todos*
+dist/*
+build-all.sh
