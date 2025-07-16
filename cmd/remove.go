@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/omar0ali/todos/core"
 	"github.com/spf13/cobra"
 )
@@ -12,12 +13,12 @@ var removeCmd = &cobra.Command{
 	Long:  "Remove a task from the task list by providing the task's ID.",
 	Run: func(cmd *cobra.Command, args []string) {
 		verbose, _ := cmd.Flags().GetBool("verbose")
-		id_remove, _ := cmd.Flags().GetUint("id")
-		fmt.Println(id_remove)
+		idRemove, _ := cmd.Flags().GetUint("id")
+		fmt.Println(idRemove)
 		if verbose {
-			fmt.Printf("[ID] %d [REMOVED]\n", id_remove)
+			fmt.Printf("[ID] %d [REMOVED]\n", idRemove)
 		}
-		core.RemoveTask(id_remove, &rows, verbose)
+		core.RemoveTask(idRemove, &rows, verbose)
 	},
 }
 

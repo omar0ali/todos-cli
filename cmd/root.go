@@ -1,6 +1,4 @@
-/*
-Copyright © 2025 OMAR BAGUNAID BAJUNAIDOMAR@GMAIL.COM
-*/
+// Package cmd
 package cmd
 
 import (
@@ -12,9 +10,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	rows []core.TableCl
-)
+var rows []core.TableCl
 
 var rootCmd = &cobra.Command{
 	Use:     "todos",
