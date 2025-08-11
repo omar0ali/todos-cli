@@ -1,17 +1,17 @@
+// Package core
 package core
 
 import (
 	"fmt"
-	"github.com/xeonx/timeago"
 	"log"
 	"os"
 	"text/tabwriter"
 	"time"
+
+	"github.com/xeonx/timeago"
 )
 
-var (
-	LastId uint = 0
-)
+var LastID uint = 0
 
 type Status string
 
@@ -22,7 +22,7 @@ const (
 )
 
 type TableCl struct {
-	Id          uint      `json:"id"`
+	ID          uint      `json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	Created     time.Time `json:"created"`
@@ -34,9 +34,9 @@ func (t *TableCl) GetTime() string {
 }
 
 func NewRow(title string, desc string, status Status) *TableCl {
-	LastId++
+	LastID++
 	return &TableCl{
-		Id:          LastId,
+		ID:          LastID,
 		Title:       title,
 		Description: desc,
 		Created:     time.Now(),
@@ -47,18 +47,18 @@ func NewRow(title string, desc string, status Status) *TableCl {
 func DisplayRecords(rows []TableCl, verbose bool) {
 	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
 	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
-	for i := 0; i < len(rows); i++ {
-		fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
+	for i := range rows {
+		fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].ID, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
 	}
 	tabWriter.Flush()
 }
 
 func DisplayRecordsStatus(rows []TableCl, verbose bool, status Status) {
 	tabWriter := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
-	tabWriter.Write([]byte("ID\tTitle\tDscription\tCreated\tStatus\n"))
-	for i := 0; i < len(rows); i++ {
+	tabWriter.Write([]byte("ID\tTitle\tDescription\tCreated\tStatus\n"))
+	for i := range rows {
 		if status == rows[i].Status {
-			fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].Id, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
+			fmt.Fprintf(tabWriter, "%v\t%s\t%s\t%s\t%s\n", rows[i].ID, rows[i].Title, rows[i].Description, rows[i].GetTime(), rows[i].Status)
 		}
 	}
 	tabWriter.Flush()
@@ -67,9 +67,9 @@ func DisplayRecordsStatus(rows []TableCl, verbose bool, status Status) {
 func RemoveTask(id uint, rows *[]TableCl, verbose bool) {
 	var nRows []TableCl
 	for _, row := range *rows {
-		if row.Id != id {
+		if row.ID != id {
 			if verbose {
-				log.Printf("[FOUND ID] %d [TITLE] %s\n", row.Id, row.Title)
+				log.Printf("[FOUND ID] %d [TITLE] %s\n", row.ID, row.Title)
 			}
 			nRows = append(nRows, row)
 		}
@@ -77,15 +77,15 @@ func RemoveTask(id uint, rows *[]TableCl, verbose bool) {
 	*rows = nRows
 }
 
-func (r *TableCl) updateStatus(status Status) {
-	r.Status = status
+func (t *TableCl) updateStatus(status Status) {
+	t.Status = status
 }
 
 func UpdateStatusTask(id uint, status Status, rows []TableCl, verbose bool) {
-	for i := 0; i < len(rows); i++ {
-		if (rows)[i].Id == id {
+	for i := range rows {
+		if (rows)[i].ID == id {
 			if verbose {
-				log.Printf("[FOUND ID] %d [TITLE] %s\n", rows[i].Id, rows[i].Title)
+				log.Printf("[FOUND ID] %d [TITLE] %s\n", rows[i].ID, rows[i].Title)
 			}
 			rows[i].updateStatus(status)
 			break
@@ -94,10 +94,10 @@ func UpdateStatusTask(id uint, status Status, rows []TableCl, verbose bool) {
 }
 
 func EditTask(rows []TableCl, id uint, title string, desc string, verbose bool) {
-	for i := 0; i < len(rows); i++ {
-		if rows[i].Id == id {
+	for i := range rows {
+		if rows[i].ID == id {
 			if verbose {
-				log.Printf("[FOUND ID] %d [OLD TITLE] %s [OLD DESCRIPTION] %s\n", rows[i].Id, rows[i].Title, rows[i].Description)
+				log.Printf("[FOUND ID] %d [OLD TITLE] %s [OLD DESCRIPTION] %s\n", rows[i].ID, rows[i].Title, rows[i].Description)
 			}
 			if title != "" {
 				rows[i].editTitle(title)
@@ -110,12 +110,12 @@ func EditTask(rows []TableCl, id uint, title string, desc string, verbose bool) 
 	}
 }
 
-func (r *TableCl) editTitle(title string) {
-	r.Title = title
+func (t *TableCl) editTitle(title string) {
+	t.Title = title
 }
 
-func (r *TableCl) editDesc(desc string) {
-	r.Description = desc
+func (t *TableCl) editDesc(desc string) {
+	t.Description = desc
 }
 
 func IsValidStatus(s Status) bool {

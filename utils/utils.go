@@ -1,11 +1,13 @@
+// Package utils
 package utils
 
 import (
 	"encoding/json"
-	"github.com/omar0ali/todos/core"
 	"log"
 	"os"
 	"path/filepath"
+
+	"github.com/omar0ali/todos/core"
 )
 
 func GetCurrentDir(verbose bool) string {
@@ -41,7 +43,7 @@ func LoadingData(filename string, rows any) {
 		log.Panic(err)
 	}
 
-	if len(data) == 0 { //additional check
+	if len(data) == 0 { // additional check
 		data = []byte("[]")
 	}
 
@@ -52,9 +54,9 @@ func LoadingData(filename string, rows any) {
 
 	if castedRows, ok := rows.(*[]core.TableCl); ok {
 		if len(*castedRows) > 0 {
-			core.LastId = (*castedRows)[len(*castedRows)-1].Id
+			core.LastID = (*castedRows)[len(*castedRows)-1].ID
 		} else {
-			core.LastId = 0 // or whatever default you prefer
+			core.LastID = 0 // or whatever default you prefer
 		}
 	} else {
 		log.Println("Failed to cast rows to *[]core.TableCl")
